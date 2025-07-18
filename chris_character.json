@@ -1,0 +1,11 @@
+{
+  "name": "Chris",
+  "stats": {
+    "strength": 16,
+    "dexterity": 12,
+    "constitution": 13,
+    "intelligence": 12,
+    "wisdom": 12,
+    "charisma": 12
+  }
+}

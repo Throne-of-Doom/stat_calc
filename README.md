@@ -1,0 +1,1 @@
+This is personal project 1 of Chris Gray for Boot.dev.

@@ -6,6 +6,7 @@ from stats.intelligence import roll_intelligence, get_intelligence_modifier
 from stats.wisdom import roll_wisdom, get_wisdom_modifier
 from stats.charisma import roll_charisma, get_charisma_modifier
 from stats.classes import CLASSES
+from stats.races import RACES
 
 def save_character_to_json(character_data, filename):
     with open(filename, 'w') as f:
@@ -24,19 +25,38 @@ def create_character():
     charisma = roll_charisma()
     
     name = input("Enter Character name: ")
-    print("Available classes:", list(CLASSES.keys()))
-    character_class = input("Enter Character class: ")
-    
+    while True:
+        print("Available classes:", list(CLASSES.keys()))
+        character_class = input("Choose your class: ")
+        if character_class in CLASSES:
+            break
+        else:
+            print("Invalid class, please try again.")
+    while True:
+        print("Available races:", list(RACES.keys()))
+        character_race = input("Choose your race: ")
+        if character_race in RACES:
+            # Apply racial bonuses
+            strength += RACES[character_race]["strength"]
+            dexterity += RACES[character_race]["dexterity"]
+            constitution += RACES[character_race]["constitution"]
+            intelligence += RACES[character_race]["intelligence"]
+            wisdom += RACES[character_race]["wisdom"]
+            charisma += RACES[character_race]["charisma"]
+            break
+        else:
+            print("Invalid race, please try again.")
     character = {
         "name": name,
         "class": character_class,
+        "race": character_race,
         "stats": {
-            "strength": {"score": strength, "modifier": get_strength_modifier(strength)},
-            "dexterity": {"score": dexterity, "modifier": get_dexterity_modifier(dexterity)},
-            "constitution": {"score": constitution, "modifier": get_constitution_modifier(constitution)},
-            "intelligence": {"score": intelligence, "modifier": get_intelligence_modifier(intelligence)},
-            "wisdom": {"score": wisdom, "modifier": get_wisdom_modifier(wisdom)},
-            "charisma": {"score": charisma, "modifier": get_charisma_modifier(charisma)},
+            "strength": {"score": strength, "racial bonus": RACES[character_race]["strength"], "modifier": get_strength_modifier(strength)},
+            "dexterity": {"score": dexterity, "racial bonus": RACES[character_race]["dexterity"], "modifier": get_dexterity_modifier(dexterity)},
+            "constitution": {"score": constitution, "racial bonus": RACES[character_race]["constitution"], "modifier": get_constitution_modifier(constitution)},
+            "intelligence": {"score": intelligence, "racial bonus": RACES[character_race]["intelligence"], "modifier": get_intelligence_modifier(intelligence)},
+            "wisdom": {"score": wisdom, "racial bonus": RACES[character_race]["wisdom"], "modifier":  get_wisdom_modifier(wisdom)},
+            "charisma": {"score": charisma, "racial bonus": RACES[character_race]["charisma"], "modifier": get_charisma_modifier(charisma)},
             "health": calculate_health(character_class, get_constitution_modifier(constitution)),
             "unarmored ac": calculate_unarmored_ac(get_dexterity_modifier(dexterity)),
         }

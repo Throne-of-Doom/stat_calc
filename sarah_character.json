@@ -1,39 +1,39 @@
 {
   "name": "Sarah",
   "class": "Fighter",
-  "race": "Human",
+  "race": "Half Elf",
   "stats": {
     "strength": {
-      "score": 15,
-      "racial bonus": 1,
-      "modifier": 2
+      "score": 7,
+      "racial bonus": 0,
+      "modifier": -2
     },
     "dexterity": {
-      "score": 14,
-      "racial bonus": 1,
-      "modifier": 2
-    },
-    "constitution": {
-      "score": 17,
-      "racial bonus": 1,
-      "modifier": 3
-    },
-    "intelligence": {
-      "score": 15,
-      "racial bonus": 1,
-      "modifier": 2
-    },
-    "wisdom": {
-      "score": 14,
-      "racial bonus": 1,
-      "modifier": 2
-    },
-    "charisma": {
-      "score": 9,
-      "racial bonus": 1,
+      "score": 8,
+      "racial bonus": 0,
       "modifier": -1
     },
-    "health": 13,
-    "unarmored ac": 12
+    "constitution": {
+      "score": 11,
+      "racial bonus": 0,
+      "modifier": 0
+    },
+    "intelligence": {
+      "score": 12,
+      "racial bonus": 0,
+      "modifier": 1
+    },
+    "wisdom": {
+      "score": 11,
+      "racial bonus": 0,
+      "modifier": 0
+    },
+    "charisma": {
+      "score": 13,
+      "racial bonus": 2,
+      "modifier": 1
+    },
+    "health": 10,
+    "unarmored ac": 9
   }
 }

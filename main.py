@@ -43,9 +43,66 @@ def create_character():
             intelligence += RACES[character_race]["intelligence"]
             wisdom += RACES[character_race]["wisdom"]
             charisma += RACES[character_race]["charisma"]
-            break
+            racial_stat_bonus1 = None
+            racial_stat_bonus2 = None
+            while True:
+                if "choice" not in RACES[character_race]:
+                    break
+                if "choice" in RACES[character_race] and racial_stat_bonus1 is None:
+                    available_stats = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+                    print("Available Stats:", available_stats)
+                    racial_stat_bonus1 = input("Choose first bonus stat: ")
+                    if racial_stat_bonus1 in available_stats:
+                        # Apply the bonus to the actual variable
+                        if racial_stat_bonus1 == "strength":
+                            strength += RACES[character_race]["choice bonus"]
+                        elif racial_stat_bonus1 == "dexterity":
+                            dexterity += RACES[character_race]["choice bonus"]
+                        elif racial_stat_bonus1 == "constitution":
+                            constitution += RACES[character_race]["choice bonus"]
+                        elif racial_stat_bonus1 == "intelligence":
+                            intelligence += RACES[character_race]["choice bonus"]
+                        elif racial_stat_bonus1 == "wisdom":
+                            wisdom += RACES[character_race]["choice bonus"]
+                        elif racial_stat_bonus1 == "charisma":
+                            charisma += RACES[character_race]["choice bonus"]
+                    else:
+                        print("Invalid Stat, Please try again")
+                        racial_stat_bonus1 = None
+                if "choice" in RACES[character_race] and racial_stat_bonus1 is not None and racial_stat_bonus2 is None:
+                    available_stats = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+                    if racial_stat_bonus1 in available_stats:
+                        available_stats.remove(racial_stat_bonus1)
+                        print("Available Stats:", available_stats)
+                        racial_stat_bonus2 = input("Choose second bonus stat: ")
+                        if racial_stat_bonus2 in available_stats:
+                            # Apply the bonus to the actual variable
+                            if racial_stat_bonus2 == "strength":
+                                strength += RACES[character_race]["choice bonus"]
+                                break
+                            elif racial_stat_bonus2 == "dexterity":
+                                dexterity += RACES[character_race]["choice bonus"]
+                                break
+                            elif racial_stat_bonus2 == "constitution":
+                                constitution += RACES[character_race]["choice bonus"]
+                                break
+                            elif racial_stat_bonus2 == "intelligence":
+                                intelligence += RACES[character_race]["choice bonus"]
+                                break
+                            elif racial_stat_bonus2 == "wisdom":
+                                wisdom += RACES[character_race]["choice bonus"]
+                                break
+                            elif racial_stat_bonus2 == "charisma":
+                                charisma += RACES[character_race]["choice bonus"]
+                                break
+                        else:
+                            print("Invalid Stat, Please try again")
+                            racial_stat_bonus2 = None
+            break   
         else:
             print("Invalid race, please try again.")
+    
+    # Move this outside the while loop - fix indentation
     character = {
         "name": name,
         "class": character_class,

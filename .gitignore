@@ -158,6 +158,9 @@ cython_debug/
 #  For PyCharm Community Edition, use 'PyCharm CE' instead of 'PyCharm'.
 .idea/
 
+# D&D Character save files
+*_character.json
+
 # Node.js
 node_modules/
 npm-debug.log*
